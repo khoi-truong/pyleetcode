@@ -75,13 +75,13 @@ def zigzag_level_order_traverse(root: TreeNode):
     result = []
     queue = deque()
     queue.append(root)
-    level = 0
+    left_to_right = True
     while queue:
         level_size = len(queue)
         current_level = deque()
         for _ in range(level_size):
             current_node: TreeNode = queue.popleft()
-            if level % 2 == 0:
+            if left_to_right:
                 current_level.append(current_node.value)
             else:
                 current_level.appendleft(current_node.value)
@@ -89,6 +89,6 @@ def zigzag_level_order_traverse(root: TreeNode):
                 queue.append(current_node.left)
             if current_node.right:
                 queue.append(current_node.right)
-        level += 1
+        left_to_right = not left_to_right
         result.append(list(current_level))
     return result
