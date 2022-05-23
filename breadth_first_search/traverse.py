@@ -125,3 +125,29 @@ def find_level_averages(root: Optional[TreeNode]):
                 queue.append(current_node.right)
         result.append(level_sum / level_size)
     return result
+
+def find_minimum_depth(root: Optional[TreeNode]):
+    """
+    Problem: \
+    https://leetcode.com/problems/minimum-depth-of-binary-tree/
+
+    Find the minimum depth of a binary tree.
+    The minimum depth is the number of nodes along the shortest path from the \
+    root node to the nearest leaf node.
+    """
+    if root is None:
+        return 0
+    queue = deque([root])
+    depth = 0
+    while queue:
+        depth += 1
+        level_size = len(queue)
+        for _ in range(level_size):
+            current_node = queue.popleft()
+            if not current_node.left and not current_node.right:
+                return depth
+            if current_node.left:
+                queue.append(current_node.left)
+            if current_node.right:
+                queue.append(current_node.right)
+    return depth
