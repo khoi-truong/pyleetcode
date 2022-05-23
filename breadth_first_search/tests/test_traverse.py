@@ -3,7 +3,8 @@ Unit tests for BFS problems
 """
 
 from ..traverse import (find_level_averages, find_minimum_depth,
-                        level_order_traverse, reverse_level_order_traverse,
+                        find_successor, level_order_traverse,
+                        reverse_level_order_traverse,
                         zigzag_level_order_traverse)
 from ..tree_node import TreeNode
 
@@ -114,3 +115,26 @@ def test_find_minimum_depth():
     root.right.left = TreeNode(6)
     root.right.right = TreeNode(7)
     assert find_minimum_depth(root) == 3
+
+
+def test_find_successor():
+    assert not find_successor(None, 1)
+
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(5)
+    result = find_successor(root, 3)
+    assert result
+    assert result.value == 4
+
+    root = TreeNode(12)
+    root.left = TreeNode(7)
+    root.right = TreeNode(1)
+    root.left.left = TreeNode(9)
+    root.right.left = TreeNode(10)
+    root.right.right = TreeNode(5)
+    result = find_successor(root, 9)
+    assert result
+    assert result.value == 10

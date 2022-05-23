@@ -151,3 +151,18 @@ def find_minimum_depth(root: Optional[TreeNode]):
             if current_node.right:
                 queue.append(current_node.right)
     return depth
+
+
+def find_successor(root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+    if root is None:
+        return None
+    queue = deque([root])
+    while queue:
+        current_node = queue.popleft()
+        if current_node.left:
+            queue.append(current_node.left)
+        if current_node.right:
+            queue.append(current_node.right)
+        if current_node.value == key:
+            break
+    return queue[0] if queue else None
