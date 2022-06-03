@@ -18,14 +18,12 @@ def level_order_traverse(root: Optional[TreeNode]):
     result = []
     if root is None:
         return result
-
-    queue = deque()
-    queue.append(root)
+    queue = deque([root])
     while queue:
         level_size = len(queue)
         current_level = []
         for _ in range(level_size):
-            current_node: TreeNode = queue.popleft()
+            current_node = queue.popleft()
             current_level.append(current_node.value)
             if current_node.left:
                 queue.append(current_node.left)
@@ -48,13 +46,12 @@ def reverse_level_order_traverse(root: Optional[TreeNode]):
         return []
 
     result = deque()
-    queue = deque()
-    queue.append(root)
+    queue = deque([root])
     while queue:
         level_size = len(queue)
         current_level = []
         for _ in range(level_size):
-            current_node: TreeNode = queue.popleft()
+            current_node = queue.popleft()
             current_level.append(current_node.value)
             if current_node.left:
                 queue.append(current_node.left)
@@ -78,14 +75,13 @@ def zigzag_level_order_traverse(root: Optional[TreeNode]):
         return []
 
     result = []
-    queue = deque()
-    queue.append(root)
+    queue = deque([root])
     left_to_right = True
     while queue:
         level_size = len(queue)
         current_level = deque()
         for _ in range(level_size):
-            current_node: TreeNode = queue.popleft()
+            current_node = queue.popleft()
             if left_to_right:
                 current_level.append(current_node.value)
             else:
@@ -109,15 +105,13 @@ def find_level_averages(root: Optional[TreeNode]):
     """
     if root is None:
         return []
-
     result = []
-    queue = deque()
-    queue.append(root)
+    queue = deque([root])
     while queue:
         level_size = len(queue)
         level_sum = 0
         for _ in range(level_size):
-            current_node: TreeNode = queue.popleft()
+            current_node = queue.popleft()
             level_sum += current_node.value
             if current_node.left:
                 queue.append(current_node.left)
@@ -125,6 +119,7 @@ def find_level_averages(root: Optional[TreeNode]):
                 queue.append(current_node.right)
         result.append(level_sum / level_size)
     return result
+
 
 def find_minimum_depth(root: Optional[TreeNode]):
     """
@@ -154,6 +149,10 @@ def find_minimum_depth(root: Optional[TreeNode]):
 
 
 def find_successor(root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+    """
+    Given a binary tree and a node, find the level order successor of the given node in the tree.
+    The level order successor is the node that appears right after the given node in the level order traversal.
+    """
     if root is None:
         return None
     queue = deque([root])
@@ -166,3 +165,29 @@ def find_successor(root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
         if current_node.value == key:
             break
     return queue[0] if queue else None
+
+
+def connect_level_order_siblings(root: Optional[TreeNode]) -> Optional[TreeNode]:
+    """
+    Problem: \
+    https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/
+
+    Populate each next pointer to point to its next right node.
+    If there is no next right node, the next pointer should be set to NULL.
+    """
+    if root is None:
+        return None
+    queue = deque([root])
+    while queue:
+        previous_node: Optional[TreeNode] = None
+        level_size = len(queue)
+        for _ in range(level_size):
+            current_node = queue.popleft()
+            if previous_node:
+                previous_node.next = current_node
+            previous_node = current_node
+            if current_node.left:
+                queue.append(current_node.left)
+            if current_node.right:
+                queue.append(current_node.right)
+    return root
