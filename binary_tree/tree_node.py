@@ -1,11 +1,19 @@
 """
 Node of a binary tree
 """
+from typing import Optional
 
 
 class TreeNode:
-
-    def __init__(self, value: int, left: 'TreeNode' = None, right: 'TreeNode' = None, next: 'TreeNode' = None):
+    """
+    Node of a binary tree
+    """
+    def __init__(
+        self, value: int,
+        left: Optional["TreeNode"] = None,
+        right: Optional["TreeNode"] = None,
+        next: Optional["TreeNode"] = None
+        ):
         self.value = value
         self.left = left
         self.right = right
@@ -18,7 +26,7 @@ class TreeNode:
             current = next_level_root
             next_level_root = None
             while current:
-                print(str(current.val) + " ", end='')
+                print(str(current.value) + " ", end="")
                 if not next_level_root:
                     if current.left:
                         next_level_root = current.left
