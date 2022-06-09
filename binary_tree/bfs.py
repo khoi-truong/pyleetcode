@@ -206,8 +206,8 @@ def connect_all_siblings(root: Optional[TreeNode]) -> Optional[TreeNode]:
     if root is None:
         return None
     queue = deque([root])
+    previous_node: Optional[TreeNode] = None
     while queue:
-        previous_node: Optional[TreeNode] = None
         current_node = queue.popleft()
         if previous_node:
             previous_node.next = current_node

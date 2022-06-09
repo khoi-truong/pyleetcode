@@ -126,3 +126,29 @@ def test_connect_level_order_siblings():
 
     root = get_mock_tree(2)
     root = connect_level_order_siblings(root)
+    assert root
+    assert not root.next
+    assert root.left and root.left.next
+    assert root.left.next.value == 1
+    assert root.right
+    assert not root.right.next
+    assert root.left.left and root.left.left.next
+    assert root.left.left.next.value == 10
+    assert root.right.left and root.right.left.next
+    assert root.right.left.next.value == 5
+    assert root.right.right
+    assert not root.right.right.next
+
+
+def test_connect_all_siblings():
+    assert not connect_all_siblings(None)
+
+    root = get_mock_tree(2)
+    root = connect_all_siblings(root)
+    assert root and root.next and root.next.value == 7
+    assert root.next.next and root.next.next.value == 1
+    assert root.next.next.next and root.next.next.next.value == 9
+    assert root.next.next.next.next and root.next.next.next.next.value == 10
+    assert root.next.next.next.next.next
+    assert root.next.next.next.next.next.value == 5
+    assert not root.next.next.next.next.next.next
