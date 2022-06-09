@@ -12,12 +12,12 @@ class TreeNode:
         self, value: int,
         left: Optional["TreeNode"] = None,
         right: Optional["TreeNode"] = None,
-        next: Optional["TreeNode"] = None
+        nekt: Optional["TreeNode"] = None
         ):
         self.value = value
         self.left = left
         self.right = right
-        self.next = next
+        self.next = nekt
 
     # level order traversal using 'next' pointer
     def print_level_order(self):
