@@ -1,8 +1,6 @@
 """
 Unit tests for DFS problems
 """
-from gettext import find
-
 from binary_tree.dfs import find_paths, find_sum_of_path_numbers, has_path
 
 from ..tree_node import TreeNode as Node
