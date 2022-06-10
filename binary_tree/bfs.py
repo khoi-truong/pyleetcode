@@ -16,7 +16,7 @@ def level_order_traverse(root: Optional[TreeNode]):
     left to right in separate sub-arrays.
     """
     result = []
-    if root is None:
+    if not root:
         return result
     queue = deque([root])
     while queue:
@@ -42,7 +42,7 @@ def reverse_level_order_traverse(root: Optional[TreeNode]):
     populate the values of all nodes in each level from left to right in \
     separate sub-arrays.
     """
-    if root is None:
+    if not root:
         return []
 
     result = deque()
@@ -71,7 +71,7 @@ def zigzag_level_order_traverse(root: Optional[TreeNode]):
     from left to right, then right to left for the next level and keep \
     alternating in the same manner for the following levels.
     """
-    if root is None:
+    if not root:
         return []
 
     result = []
@@ -103,7 +103,7 @@ def find_level_averages(root: Optional[TreeNode]):
     Given a binary tree, populate an array to represent the averages of all of \
     its levels.
     """
-    if root is None:
+    if not root:
         return []
     result = []
     queue = deque([root])
@@ -130,7 +130,7 @@ def find_minimum_depth(root: Optional[TreeNode]):
     The minimum depth is the number of nodes along the shortest path from the \
     root node to the nearest leaf node.
     """
-    if root is None:
+    if not root:
         return 0
     queue = deque([root])
     depth = 0
@@ -155,7 +155,7 @@ def find_successor(root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
     The level order successor is the node that appears right after the given \
     node in the level order traversal.
     """
-    if root is None:
+    if not root:
         return None
     queue = deque([root])
     while queue:
@@ -179,7 +179,7 @@ def connect_level_order_siblings(
     Populate each next pointer to point to its next right node.
     If there is no next right node, the next pointer should be set to NULL.
     """
-    if root is None:
+    if not root:
         return None
     queue = deque([root])
     while queue:
@@ -203,7 +203,7 @@ def connect_all_siblings(root: Optional[TreeNode]) -> Optional[TreeNode]:
     The last node of each level should point to the first node of the next\
     level.
     """
-    if root is None:
+    if not root:
         return None
     queue = deque([root])
     previous_node: Optional[TreeNode] = None
@@ -228,7 +228,7 @@ def tree_right_view(root: Optional[TreeNode]) -> list[TreeNode]:
     The right view of a binary tree is the set of nodes visible when the tree \
     is seen from the right side.
     """
-    if root is None:
+    if not root:
         return []
     result = []
     queue = deque([root])
