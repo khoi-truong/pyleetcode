@@ -81,6 +81,14 @@ def _find_sum_of_path_numbers(node: Optional[TreeNode], path_sum: int) -> int:
 
 
 def find_path(root: Optional[TreeNode], sequence: List[int]) -> bool:
+    """
+    Problem:
+        https://leetcode.com/problems/check-if-a-string-is-a-valid-sequence-from-root-to-leaves-path-in-a-binary-tree/
+
+    Given a binary tree where each path going from the root to any leaf form a \
+    valid sequence, check if a given string is a valid sequence in such binary \
+    tree.
+    """
     if not root:
         return len(sequence) == 0
     return _find_path(root, sequence, 0)
