@@ -7,7 +7,6 @@ approach) to keep track of all the previous (parent) nodes while traversing. \
 This also means that the space complexity of the algorithm will be O(H), where \
 `H` is the maximum height of the tree.
 """
-
 from typing import List, Optional
 
 from binary_tree.tree_node import TreeNode
@@ -79,3 +78,25 @@ def _find_sum_of_path_numbers(node: Optional[TreeNode], path_sum: int) -> int:
     left_sum = _find_sum_of_path_numbers(node.left, path_sum)
     right_sum = _find_sum_of_path_numbers(node.right, path_sum)
     return left_sum + right_sum
+
+
+def find_path(root: Optional[TreeNode], sequence: List[int]) -> bool:
+    if not root:
+        return len(sequence) == 0
+    return _find_path(root, sequence, 0)
+
+
+def _find_path(
+        node: Optional[TreeNode],
+        sequence: List[int],
+        index: int) -> bool:
+    if not node:
+        return False
+    length = len(sequence)
+    if index >= length or node.value != sequence[index]:
+        return False
+    if not node.left and not node.right and index == length - 1:
+        return True
+    find_path_in_left = _find_path(node.left, sequence, index + 1)
+    find_path_in_right = _find_path(node.right, sequence, index + 1)
+    return find_path_in_left or find_path_in_right

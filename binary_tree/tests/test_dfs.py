@@ -1,7 +1,8 @@
 """
 Unit tests for DFS problems
 """
-from binary_tree.dfs import find_paths, find_sum_of_path_numbers, has_path
+from binary_tree.dfs import (find_path, find_paths, find_sum_of_path_numbers,
+                             has_path)
 
 from ..tree_node import TreeNode as Node
 
@@ -80,3 +81,10 @@ def test_find_sum_of_path_numbers():
 
     root = get_mock_tree(5)
     assert find_sum_of_path_numbers(root) == 332
+
+
+def test_find_path():
+    assert find_path(None, [])
+    assert find_path(Node(1), [1])
+    assert find_path(get_mock_tree(), [1, 3, 6])
+    assert find_path(get_mock_tree(4), [1, 9, 9])
