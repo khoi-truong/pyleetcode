@@ -43,7 +43,7 @@ def _find_paths(node: Optional[TreeNode],
                 required_sum: int,
                 path: List[int],
                 all_paths: List[List[int]]):
-    if not node or required_sum < 0:
+    if not node:
         return
     path.append(node.value)
     if not node.left and not node.right and node.value == required_sum:
