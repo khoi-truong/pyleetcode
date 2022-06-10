@@ -1,8 +1,8 @@
 """
 Unit tests for DFS problems
 """
-from binary_tree.dfs import (find_path, find_paths, find_sum_of_path_numbers,
-                             has_path)
+from binary_tree.dfs import (count_paths, find_path, find_paths,
+                             find_sum_of_path_numbers, has_path)
 
 from ..tree_node import TreeNode as Node
 
@@ -43,6 +43,14 @@ def get_mock_tree(number: int = 0) -> Node:
                     Node(1,
                          Node(6),
                          Node(5)))
+    elif number == 6:
+        return Node(1,
+                    Node(7,
+                         Node(6),
+                         Node(5)),
+                    Node(9,
+                         Node(2),
+                         Node(3)))
     return Node(1,
                 Node(2,
                      Node(4),
@@ -88,3 +96,11 @@ def test_find_path():
     assert find_path(Node(1), [1])
     assert find_path(get_mock_tree(), [1, 3, 6])
     assert find_path(get_mock_tree(4), [1, 9, 9])
+
+
+def test_count_paths():
+    assert count_paths(None, 10) == 0
+    assert count_paths(Node(1), 10) == 0
+    assert count_paths(Node(10), 10) == 1
+    assert count_paths(get_mock_tree(3), 11) == 2
+    assert count_paths(get_mock_tree(6), 12) == 3

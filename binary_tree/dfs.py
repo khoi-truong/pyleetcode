@@ -108,3 +108,41 @@ def _find_path(
     find_path_in_left = _find_path(node.left, sequence, index + 1)
     find_path_in_right = _find_path(node.right, sequence, index + 1)
     return find_path_in_left or find_path_in_right
+
+
+def count_paths(root: Optional[TreeNode], target_sum: int) -> int:
+    """
+    Problems:
+        https://leetcode.com/problems/path-sum-iii/
+
+    Given the root of a binary tree and an integer targetSum, return the \
+    number of paths where the sum of the values along the path equals targetSum.
+
+    The path does not need to start or end at the root or a leaf, but it must \
+    go downwards (i.e., traveling only from parent nodes to child nodes).
+    """
+    return _count_paths(root, target_sum, [])
+
+
+def _count_paths(
+        node: Optional[TreeNode],
+        target_sum: int,
+        path: List[int]) -> int:
+
+    if not node:
+        return 0
+
+    path.append(node.value)
+    path_count = 0
+    path_sum = 0
+    for i in range(len(path) - 1, -1, -1):
+        path_sum += path[i]
+        if path_sum == target_sum:
+            path_count += 1
+
+    path_count += _count_paths(node.left, target_sum, path)
+    path_count += _count_paths(node.right, target_sum, path)
+
+    path.pop()
+
+    return path_count
