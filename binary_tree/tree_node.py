@@ -9,11 +9,12 @@ class TreeNode:
     Node of a binary tree
     """
 
-    def __init__(self,
-                 value: int,
-                 left: Optional["TreeNode"] = None,
-                 right: Optional["TreeNode"] = None,
-                 nekt: Optional["TreeNode"] = None):
+    def __init__(
+            self,
+            value: int,
+            left: Optional["TreeNode"] = None,
+            right: Optional["TreeNode"] = None,
+            nekt: Optional["TreeNode"] = None):
         self.value = value
         self.left = left
         self.right = right
