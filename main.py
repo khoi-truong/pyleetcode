@@ -4,12 +4,12 @@ Main
 import os
 import sys
 
-module_bfs = os.path.abspath(os.path.join('breadth_first_search'))
-sys.path.append(module_bfs)
+module_two_pointers = os.path.abspath(os.path.join('two_pointers'))
+sys.path.append(module_two_pointers)
 
 
 def main():
-    print('Hello, World')
+    print(sys.path)
 
 
 if __name__ == '__main__':
