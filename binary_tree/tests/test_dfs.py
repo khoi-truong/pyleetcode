@@ -1,63 +1,31 @@
 """
 Unit tests for DFS problems
 """
-from binary_tree.dfs import (count_paths, find_path, find_paths,
-                             find_sum_of_path_numbers, has_path)
+from binary_tree.dfs import (
+    count_paths,
+    find_path,
+    find_paths,
+    find_sum_of_path_numbers,
+    has_path,
+)
 
-from ..tree_node import TreeNode as Node
+from binary_tree.tree_node import TreeNode as Node
 
 
 def get_mock_tree(number: int = 0) -> Node:
     if number == 1:
-        return Node(1,
-                    Node(7,
-                         Node(4),
-                         Node(5)),
-                    Node(9,
-                         Node(2),
-                         Node(7)))
+        return Node(1, Node(7, Node(4), Node(5)), Node(9, Node(2), Node(7)))
     elif number == 2:
-        return Node(12,
-                    Node(7,
-                         Node(9)),
-                    Node(1,
-                         Node(10),
-                         Node(5)))
+        return Node(12, Node(7, Node(9)), Node(1, Node(10), Node(5)))
     elif number == 3:
-        return Node(12,
-                    Node(7,
-                         Node(4)),
-                    Node(1,
-                         Node(10),
-                         Node(5)))
+        return Node(12, Node(7, Node(4)), Node(1, Node(10), Node(5)))
     elif number == 4:
-        return Node(1,
-                    Node(7),
-                    Node(9,
-                         Node(2),
-                         Node(9)))
+        return Node(1, Node(7), Node(9, Node(2), Node(9)))
     elif number == 5:
-        return Node(1,
-                    Node(0,
-                         Node(1)),
-                    Node(1,
-                         Node(6),
-                         Node(5)))
+        return Node(1, Node(0, Node(1)), Node(1, Node(6), Node(5)))
     elif number == 6:
-        return Node(1,
-                    Node(7,
-                         Node(6),
-                         Node(5)),
-                    Node(9,
-                         Node(2),
-                         Node(3)))
-    return Node(1,
-                Node(2,
-                     Node(4),
-                     Node(5)),
-                Node(3,
-                     Node(6),
-                     Node(7)))
+        return Node(1, Node(7, Node(6), Node(5)), Node(9, Node(2), Node(3)))
+    return Node(1, Node(2, Node(4), Node(5)), Node(3, Node(6), Node(7)))
 
 
 def test_has_path_with_sum():

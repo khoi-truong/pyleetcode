@@ -7,7 +7,7 @@ approach) to keep track of all the previous (parent) nodes while traversing. \
 This also means that the space complexity of the algorithm will be O(H), where \
 `H` is the maximum height of the tree.
 """
-from typing import List, Optional
+from typing import Optional
 
 from binary_tree.tree_node import TreeNode
 
@@ -25,11 +25,12 @@ def has_path(root: Optional[TreeNode], target_sum: int) -> bool:
         return False
     if not root.left and not root.right:
         return root.value == target_sum
-    return has_path(root.left, target_sum - root.value) or \
-        has_path(root.right, target_sum - root.value)
+    return has_path(root.left, target_sum - root.value) or has_path(
+        root.right, target_sum - root.value
+    )
 
 
-def find_paths(root: Optional[TreeNode], target_sum: int) -> List[List[int]]:
+def find_paths(root: Optional[TreeNode], target_sum: int) -> list[list[int]]:
     """
     Problem:
         https://leetcode.com/problems/path-sum-ii/
@@ -39,16 +40,17 @@ def find_paths(root: Optional[TreeNode], target_sum: int) -> List[List[int]]:
     """
     if not root:
         return []
-    all_paths = []
+    all_paths = list[list[int]]()
     _find_paths(root, target_sum, [], all_paths)
     return all_paths
 
 
 def _find_paths(
-        node: Optional[TreeNode],
-        required_sum: int,
-        path: List[int],
-        all_paths: List[List[int]]):
+    node: Optional[TreeNode],
+    required_sum: int,
+    path: list[int],
+    all_paths: list[list[int]],
+):
     if not node:
         return
     path.append(node.value)
@@ -80,7 +82,7 @@ def _find_sum_of_path_numbers(node: Optional[TreeNode], path_sum: int) -> int:
     return left_sum + right_sum
 
 
-def find_path(root: Optional[TreeNode], sequence: List[int]) -> bool:
+def find_path(root: Optional[TreeNode], sequence: list[int]) -> bool:
     """
     Problem:
         https://leetcode.com/problems/check-if-a-string-is-a-valid-sequence-from-root-to-leaves-path-in-a-binary-tree/
@@ -94,10 +96,7 @@ def find_path(root: Optional[TreeNode], sequence: List[int]) -> bool:
     return _find_path(root, sequence, 0)
 
 
-def _find_path(
-        node: Optional[TreeNode],
-        sequence: List[int],
-        index: int) -> bool:
+def _find_path(node: Optional[TreeNode], sequence: list[int], index: int) -> bool:
     if not node:
         return False
     length = len(sequence)
@@ -124,11 +123,7 @@ def count_paths(root: Optional[TreeNode], target_sum: int) -> int:
     return _count_paths(root, target_sum, [])
 
 
-def _count_paths(
-        node: Optional[TreeNode],
-        target_sum: int,
-        path: List[int]) -> int:
-
+def _count_paths(node: Optional[TreeNode], target_sum: int, path: list[int]) -> int:
     if not node:
         return 0
 

@@ -7,7 +7,7 @@ from typing import Optional
 from .tree_node import TreeNode
 
 
-def level_order_traverse(root: Optional[TreeNode]):
+def level_order_traverse(root: Optional[TreeNode]) -> list[list[int]]:
     """
     Problem: https://leetcode.com/problems/binary-tree-level-order-traversal/
 
@@ -15,13 +15,13 @@ def level_order_traverse(root: Optional[TreeNode]):
     traversal. You should populate the values of all nodes of each level from \
     left to right in separate sub-arrays.
     """
-    result = []
+    result = list[list[int]]()
     if not root:
         return result
     queue = deque([root])
     while queue:
         level_size = len(queue)
-        current_level = []
+        current_level = list[int]()
         for _ in range(level_size):
             current_node = queue.popleft()
             current_level.append(current_node.value)
@@ -33,7 +33,7 @@ def level_order_traverse(root: Optional[TreeNode]):
     return result
 
 
-def reverse_level_order_traverse(root: Optional[TreeNode]):
+def reverse_level_order_traverse(root: Optional[TreeNode]) -> list[list[int]]:
     """
     Problem: https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
 
@@ -45,11 +45,11 @@ def reverse_level_order_traverse(root: Optional[TreeNode]):
     if not root:
         return []
 
-    result = deque()
+    result = deque[list[int]]()
     queue = deque([root])
     while queue:
         level_size = len(queue)
-        current_level = []
+        current_level = list[int]()
         for _ in range(level_size):
             current_node = queue.popleft()
             current_level.append(current_node.value)
@@ -61,7 +61,7 @@ def reverse_level_order_traverse(root: Optional[TreeNode]):
     return list(result)
 
 
-def zigzag_level_order_traverse(root: Optional[TreeNode]):
+def zigzag_level_order_traverse(root: Optional[TreeNode]) -> list[list[int]]:
     """
     Problem: \
     https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
@@ -74,12 +74,12 @@ def zigzag_level_order_traverse(root: Optional[TreeNode]):
     if not root:
         return []
 
-    result = []
+    result = list[list[int]]()
     queue = deque([root])
     left_to_right = True
     while queue:
         level_size = len(queue)
-        current_level = deque()
+        current_level = deque[int]()
         for _ in range(level_size):
             current_node = queue.popleft()
             if left_to_right:
@@ -95,7 +95,7 @@ def zigzag_level_order_traverse(root: Optional[TreeNode]):
     return result
 
 
-def find_level_averages(root: Optional[TreeNode]):
+def find_level_averages(root: Optional[TreeNode]) -> list[float]:
     """
     Problem: \
     https://leetcode.com/problems/average-of-levels-in-binary-tree/
@@ -105,7 +105,7 @@ def find_level_averages(root: Optional[TreeNode]):
     """
     if not root:
         return []
-    result = []
+    result = list[float]()
     queue = deque([root])
     while queue:
         level_size = len(queue)
@@ -169,9 +169,7 @@ def find_successor(root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
     return queue[0] if queue else None
 
 
-def connect_level_order_siblings(
-    root: Optional[TreeNode]
-    ) -> Optional[TreeNode]:
+def connect_level_order_siblings(root: Optional[TreeNode]) -> Optional[TreeNode]:
     """
     Problem: \
     https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/
@@ -230,7 +228,7 @@ def tree_right_view(root: Optional[TreeNode]) -> list[TreeNode]:
     """
     if not root:
         return []
-    result = []
+    result = list[TreeNode]()
     queue = deque([root])
     while queue:
         level_size = len(queue)
