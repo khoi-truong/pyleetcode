@@ -1,7 +1,7 @@
 """
 Unit tests for BFS problems
 """
-from binary_tree.bfs import (
+from src.binary_tree.bfs import (
     connect_all_siblings,
     connect_level_order_siblings,
     find_level_averages,
@@ -11,7 +11,7 @@ from binary_tree.bfs import (
     reverse_level_order_traverse,
     zigzag_level_order_traverse,
 )
-from binary_tree.tree_node import TreeNode as Node
+from src.binary_tree.tree_node import TreeNode as Node
 
 
 def get_mock_tree(number: int = 0) -> Node:

@@ -9,7 +9,7 @@ This also means that the space complexity of the algorithm will be O(H), where \
 """
 from typing import Optional
 
-from binary_tree.tree_node import TreeNode
+from .tree_node import TreeNode
 
 
 def has_path(root: Optional[TreeNode], target_sum: int) -> bool:

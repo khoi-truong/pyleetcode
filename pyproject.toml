@@ -1,0 +1,28 @@
+[project]
+name = "pyleetcode"
+version = "0.1.0"
+description = "Leetcode problems in Python"
+authors = [
+    {name = "Khoi Truong", email = "khoi.truongminh@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+[[tool.pdm.source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pylint>=2.17.5",
+    "black>=23.7.0",
+    "pytest>=7.4.0",
+]

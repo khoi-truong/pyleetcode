@@ -3,7 +3,7 @@ Problem: Valid Palindrome
 """
 
 import unittest
-from two_pointers.valid_palindrome import is_palindrome
+from src.two_pointers.valid_palindrome import is_palindrome
 
 
 class TestValidPalindrome(unittest.TestCase):

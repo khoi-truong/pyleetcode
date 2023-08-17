@@ -1,7 +1,7 @@
 """
 Unit tests for DFS problems
 """
-from binary_tree.dfs import (
+from src.binary_tree.dfs import (
     count_paths,
     find_path,
     find_paths,
@@ -9,7 +9,7 @@ from binary_tree.dfs import (
     has_path,
 )
 
-from binary_tree.tree_node import TreeNode as Node
+from src.binary_tree.tree_node import TreeNode as Node
 
 
 def get_mock_tree(number: int = 0) -> Node:
