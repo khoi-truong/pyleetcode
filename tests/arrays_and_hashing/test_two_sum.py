@@ -21,3 +21,7 @@ class TestTwoSum(unittest.TestCase):
 
     def test_two_sum_with_one_element(self):
         self.assertEqual(two_sum([1], 6), [])
+
+
+if __name__ == "__main__":
+    unittest.main()
