@@ -11,17 +11,20 @@ class TestTopKFrequentElements(unittest.TestCase):
     Test cases for top k frequent elements problem
     """
 
-    def test_top_k_frequent_elements(self):
+    def test_top_k_frequent_elements_defaultdict(self):
         sut = TopKFrequentElements()
-        self.assertCountEqual(
-            sut.top_k_frequent([1, 1, 1, 2, 2, 3], 2),
-            [1, 2],
-        )
-        self.assertCountEqual(
-            sut.top_k_frequent([1], 1),
-            [1],
-        )
-        self.assertCountEqual(
-            sut.top_k_frequent([1, 2], 2),
-            [1, 2],
-        )
+        solutions = [
+            sut.top_k_frequent_defaultdict,
+            sut.top_k_frequent_fixed_array,
+        ]
+        for solution in solutions:
+            self.assertCountEqual(solution([1, 1, 1, 2, 2, 3], 2), [1, 2])
+            self.assertCountEqual(solution([1], 1), [1])
+            self.assertCountEqual(solution([1, 2], 2), [1, 2])
+            self.assertCountEqual(solution([1, 2, 2], 1), [2])
+            self.assertCountEqual(solution([1, 2, 2], 2), [1, 2])
+            self.assertCountEqual(solution([1, 2, 2], 3), [1, 2])
+
+
+if __name__ == "__main__":
+    unittest.main()

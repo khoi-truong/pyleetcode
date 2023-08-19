@@ -28,3 +28,7 @@ class TestGroupAnagrams(unittest.TestCase):
         )
         self.assertEqual(sut.group_anagrams([""]), [[""]])
         self.assertEqual(sut.group_anagrams(["a"]), [["a"]])
+
+
+if __name__ == "__main__":
+    unittest.main()

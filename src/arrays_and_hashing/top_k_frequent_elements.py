@@ -14,7 +14,7 @@ class TopKFrequentElements:
     Problem: Top K Frequent Elements
     """
 
-    def top_k_frequent(self, nums: list[int], k: int) -> list[int]:
+    def top_k_frequent_defaultdict(self, nums: list[int], k: int) -> list[int]:
         """
         :param nums: list of integers
         :param k: number of top frequent elements
@@ -22,8 +22,24 @@ class TopKFrequentElements:
         """
         if not nums:
             return []
-        frequencies = self._get_frequencies(nums)
-        return self._get_top_k_frequent_elements(frequencies, k)
+        return self._get_top_k_frequent_elements_defaultdict(
+            frequencies=self._get_frequencies(nums),
+            k=k,
+        )
+
+    def top_k_frequent_fixed_array(self, nums: list[int], k: int) -> list[int]:
+        """
+        :param nums: list of integers
+        :param k: number of top frequent elements
+        :return: list of top k frequent elements
+        """
+        if not nums:
+            return []
+        return self._get_top_k_frequent_elements_fixed_array(
+            count=len(nums),
+            frequencies=self._get_frequencies(nums),
+            k=k,
+        )
 
     def _get_frequencies(self, nums: list[int]) -> dict[int, int]:
         result = dict[int, int]()
@@ -31,7 +47,7 @@ class TopKFrequentElements:
             result[num] = result.get(num, 0) + 1
         return result
 
-    def _get_top_k_frequent_elements(
+    def _get_top_k_frequent_elements_defaultdict(
         self,
         frequencies: dict[int, int],
         k: int,
@@ -44,3 +60,20 @@ class TopKFrequentElements:
         for frequency in top_frequencies:
             result += reverse[frequency]
         return result[0:k]
+
+    def _get_top_k_frequent_elements_fixed_array(
+        self,
+        count: int,
+        frequencies: dict[int, int],
+        k: int,
+    ) -> list[int]:
+        nums_with_frequency = [list[int]() for _ in range(count + 1)]
+        for num, frequency in frequencies.items():
+            nums_with_frequency[frequency].append(num)
+        result = list[int]()
+        for frequency in range(len(nums_with_frequency) - 1, 0, -1):
+            for nums in nums_with_frequency[frequency]:
+                result.append(nums)
+                if len(result) == k:
+                    return result
+        return result
