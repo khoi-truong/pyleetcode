@@ -7,14 +7,40 @@ Space Complexity: O(n)
 """
 
 from collections import defaultdict
+from abc import ABC, abstractmethod
+
+# TODO: Add heap solution
+# TODO: Add quick select solution
+# TODO: Add bucket sort solution
 
 
-class TopKFrequentElements:
+class TopKFrequentElementsSolution(ABC):
+    """
+    Abstract class for top k frequent elements solutions
+    """
+
+    @abstractmethod
+    def top_k_frequent(self, nums: list[int], k: int) -> list[int]:
+        """
+        :param nums: list of integers
+        :param k: number of top frequent elements
+        :return: list of top k frequent elements
+        """
+        pass
+
+    def _get_frequencies(self, nums: list[int]) -> dict[int, int]:
+        result = dict[int, int]()
+        for num in nums:
+            result[num] = result.get(num, 0) + 1
+        return result
+
+
+class TopKFrequentElementsDefaultdict(TopKFrequentElementsSolution):
     """
     Problem: Top K Frequent Elements
     """
 
-    def top_k_frequent_defaultdict(self, nums: list[int], k: int) -> list[int]:
+    def top_k_frequent(self, nums: list[int], k: int) -> list[int]:
         """
         :param nums: list of integers
         :param k: number of top frequent elements
@@ -26,26 +52,6 @@ class TopKFrequentElements:
             frequencies=self._get_frequencies(nums),
             k=k,
         )
-
-    def top_k_frequent_fixed_array(self, nums: list[int], k: int) -> list[int]:
-        """
-        :param nums: list of integers
-        :param k: number of top frequent elements
-        :return: list of top k frequent elements
-        """
-        if not nums:
-            return []
-        return self._get_top_k_frequent_elements_fixed_array(
-            count=len(nums),
-            frequencies=self._get_frequencies(nums),
-            k=k,
-        )
-
-    def _get_frequencies(self, nums: list[int]) -> dict[int, int]:
-        result = dict[int, int]()
-        for num in nums:
-            result[num] = result.get(num, 0) + 1
-        return result
 
     def _get_top_k_frequent_elements_defaultdict(
         self,
@@ -60,6 +66,26 @@ class TopKFrequentElements:
         for frequency in top_frequencies:
             result += reverse[frequency]
         return result[0:k]
+
+
+class TopKFrequentElementsFixedArray(TopKFrequentElementsSolution):
+    """
+    Problem: Top K Frequent Elements
+    """
+
+    def top_k_frequent(self, nums: list[int], k: int) -> list[int]:
+        """
+        :param nums: list of integers
+        :param k: number of top frequent elements
+        :return: list of top k frequent elements
+        """
+        if not nums:
+            return []
+        return self._get_top_k_frequent_elements_fixed_array(
+            count=len(nums),
+            frequencies=self._get_frequencies(nums),
+            k=k,
+        )
 
     def _get_top_k_frequent_elements_fixed_array(
         self,
