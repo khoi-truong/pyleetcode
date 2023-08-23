@@ -18,7 +18,8 @@ class DailyTemperaturesSolution(ABC):
 
 class DailyTemperaturesStack(DailyTemperaturesSolution):
     """
-    Solution: Stack
+    Solution: Monotonic Stack
+    Reference: https://youtu.be/Dq_ObZwTY_Q
     Time Complexity: O(n)
     Space Complexity: O(n)
     """
