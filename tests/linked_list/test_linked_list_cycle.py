@@ -3,7 +3,7 @@ Problem: Linked List Cycle
 """
 
 import unittest
-from src.linked_list.list_node import ListNode
+from src.data_structures.list_node import ListNode
 from src.linked_list.linked_list_cycle import (
     LinkedListCycleSolution,
     LinkedListCycleFastSlowPointers,

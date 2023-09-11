@@ -6,7 +6,7 @@ Leetcode: https://leetcode.com/problems/reverse-linked-list
 from abc import ABC, abstractmethod
 from typing import Optional
 
-from .list_node import ListNode
+from ..data_structures.list_node import ListNode
 
 
 class ReverseLinkedListSolution(ABC):

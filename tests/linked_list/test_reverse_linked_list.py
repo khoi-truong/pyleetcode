@@ -7,7 +7,7 @@ from src.linked_list.reverse_linked_list import (
     ReverseLinkedListSolution,
     ReverseLinkedListFirstSolution,
 )
-from src.linked_list.list_node import ListNode
+from src.data_structures.list_node import ListNode
 
 
 class TestReverseLinkedList(unittest.TestCase):

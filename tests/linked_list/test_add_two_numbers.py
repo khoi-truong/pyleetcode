@@ -3,7 +3,7 @@ Problem: Add Two Numbers
 """
 
 import unittest
-from src.linked_list.list_node import ListNode
+from src.data_structures.list_node import ListNode
 from src.linked_list.add_two_numbers import (
     AddTwoNumbersFirstSolution,
     AddTwoNumbersSolution,

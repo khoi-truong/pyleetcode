@@ -6,7 +6,7 @@ Leetcode: https://leetcode.com/problems/linked-list-cycle
 
 from abc import ABC, abstractmethod
 from typing import Optional
-from .list_node import ListNode
+from ..data_structures.list_node import ListNode
 
 
 class LinkedListCycleSolution(ABC):
