@@ -6,6 +6,7 @@ import unittest
 from src.sliding_window.minimum_window_substring import (
     Solution,
     SlidingWindowSolution,
+    SlidingWindowOptimisedSolution,
 )
 
 
@@ -16,6 +17,10 @@ class TestMinimumWindowSubstring(unittest.TestCase):
 
     def test_sliding_window_solution(self):
         sut = SlidingWindowSolution()
+        self._test_solution(sut)
+
+    def test_sliding_window_optimised_solution(self):
+        sut = SlidingWindowOptimisedSolution()
         self._test_solution(sut)
 
     def _test_solution(self, sut: Solution):
