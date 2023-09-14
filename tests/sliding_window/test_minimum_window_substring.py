@@ -31,6 +31,10 @@ class TestMinimumWindowSubstring(unittest.TestCase):
             sut.min_window("a", "aa"),
             "",
         )
+        self.assertEqual(
+            sut.min_window("bba", "ab"),
+            "ba",
+        )
 
 
 if __name__ == "__main__":
